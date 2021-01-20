@@ -52,9 +52,10 @@ function articleMaker(article) {
   div.appendChild(p2);
   div.appendChild(p3);
   div.appendChild(span);
+  span.addEventListener('click', (event) => {event.target.parentElement.classList.toggle('article-open')})
   return div;
 };
-
+const articles = document.querySelector('.articles');
 data.map((article) => {
-  console.log(articleMaker(article));
+  articles.appendChild(articleMaker(article))
 });
