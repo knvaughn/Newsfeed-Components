@@ -45,14 +45,18 @@ function articleMaker(article) {
   p2.textContent = article.secondParagraph;
   p3.textContent = article.thirdParagraph;
   span.classList.add('expandButton');
-  span.textContent = '+';
+  span.textContent = '+ Click to Expand';
   div.appendChild(h2);
   div.appendChild(date);
   div.appendChild(p1);
   div.appendChild(p2);
   div.appendChild(p3);
   div.appendChild(span);
-  span.addEventListener('click', (event) => {event.target.parentElement.classList.toggle('article-open')})
+  span.addEventListener('click', (event) => {
+    div.classList.toggle('article-open');
+    const isOpen = div.classList.contains('article-open');
+    span.textContent = isOpen ? '-- Click to Close' : '+ Click to Expand';
+  });
   return div;
 };
 const articles = document.querySelector('.articles');
